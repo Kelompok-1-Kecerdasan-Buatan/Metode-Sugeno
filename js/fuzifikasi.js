@@ -9,13 +9,13 @@ function hitungDerajatKeanggotaan(x, batas) {
             return (c - x) / (c - b); 
     } else if (batas.length === 4) {
         let [a, b, c, d] = batas;
-        if (x <= a || x >= d) 
+        if (x < a || x > d) 
             return 0; 
-        if (x > a && x < b) 
-            return (x - a) / (b - a); 
-        if (x >= b && x <= c) 
-            return 1; 
-        if (x > c && x < d) 
+        if (x >= b && x <= c)
+            return 1;
+        if (x >= a && x < b) 
+            return (x - a) / (b - a);
+        if (x > c && x <= d) 
             return (d - x) / (d - c); 
     }
     return 0;
