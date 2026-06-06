@@ -1,22 +1,24 @@
 function hitungDerajatKeanggotaan(x, batas) {
     if (batas.length === 3) {
-        let [a, b, c] = batas;
+        const [a, b, c] = batas;
         if (x <= a || x >= c) 
             return 0;
+        if (x === b)
+            return 1;
         if (x > a && x <= b) 
-            return (x - a) / (b - a); 
+            return (b - a === 0) ? 1 : (x - a) / (b - a); 
         if (x > b && x < c) 
-            return (c - x) / (c - b); 
+            return (c - b === 0) ? 1 : (c - x) / (c - b); 
     } else if (batas.length === 4) {
-        let [a, b, c, d] = batas;
+        const [a, b, c, d] = batas;
         if (x < a || x > d) 
             return 0; 
         if (x >= b && x <= c)
             return 1;
         if (x >= a && x < b) 
-            return (x - a) / (b - a);
+            return (b - a === 0) ? 1 : (x - a) / (b - a);
         if (x > c && x <= d) 
-            return (d - x) / (d - c); 
+            return (d - c === 0) ? 1 : (d - x) / (d - c); 
     }
     return 0;
 }
