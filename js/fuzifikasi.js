@@ -21,7 +21,6 @@ function hitungDerajatKeanggotaan(x, batas) {
     return 0;
 }
 
-// 2. Ini adalah fungsi UTAMA tugas kamu (Fuzzifikasi)
 function prosesFuzzifikasi(suhuCrisp, kelembapanCrisp, intensitasCrisp) {
     const { nilaiSemesta } = fuzzyLogic(); 
     const muSuhu = {
