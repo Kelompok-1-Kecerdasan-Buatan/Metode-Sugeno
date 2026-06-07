@@ -1,1 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistem Fuzzy Penyiraman Tanaman</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
 
+  <div class="bg-grid"></div>
+
+  <main class="container">
+
+    <header class="header">
+      <div class="header-badge">Sugeno Fuzzy Inference System</div>
+      <h1>Sistem Penyiraman <span class="accent">Otomatis</span></h1>
+      <p class="subtitle">Masukkan nilai sensor untuk menghitung durasi penyiraman optimal menggunakan logika fuzzy metode Sugeno.</p>
+    </header>
+
+    <section class="input-section card">
+      <h2 class="section-title">
+        <span class="step-num">01</span> Input Sensor
+      </h2>
+      <div class="input-grid">
+
+        <div class="input-group">
+          <label for="suhu">Suhu <span class="unit">(°C)</span></label>
+          <div class="slider-wrap">
+            <input type="range" id="suhu" min="15" max="45" value="30" step="0.1" />
+            <output for="suhu" id="suhu-val">30.0</output>
+          </div>
+          <div class="range-labels"><span>15°C</span><span>45°C</span></div>
+          <div class="mu-pills" id="mu-suhu"></div>
+        </div>
+
+        <div class="input-group">
+          <label for="kelembapan">Kelembapan Tanah <span class="unit">(%)</span></label>
+          <div class="slider-wrap">
+            <input type="range" id="kelembapan" min="0" max="100" value="40" step="0.1" />
+            <output for="kelembapan" id="kelembapan-val">40.0</output>
+          </div>
+          <div class="range-labels"><span>0%</span><span>100%</span></div>
+          <div class="mu-pills" id="mu-kelembapan"></div>
+        </div>
+
+        <div class="input-group">
+          <label for="intensitas">Intensitas Cahaya <span class="unit">(%)</span></label>
+          <div class="slider-wrap">
+            <input type="range" id="intensitas" min="0" max="100" value="60" step="0.1" />
+            <output for="intensitas" id="intensitas-val">60.0</output>
+          </div>
+          <div class="range-labels"><span>0%</span><span>100%</span></div>
+          <div class="mu-pills" id="mu-intensitas"></div>
+        </div>
+
+      </div>
+
+      <div class="manual-input-row">
+        <div class="manual-group">
+          <label for="suhu-num">Suhu manual</label>
+          <input type="number" id="suhu-num" min="15" max="45" step="0.1" value="30" />
+        </div>
+        <div class="manual-group">
+          <label for="kelembapan-num">Kelembapan manual</label>
+          <input type="number" id="kelembapan-num" min="0" max="100" step="0.1" value="40" />
+        </div>
+        <div class="manual-group">
+          <label for="intensitas-num">Intensitas manual</label>
+          <input type="number" id="intensitas-num" min="0" max="100" step="0.1" value="60" />
+        </div>
+        <button id="btn-hitung" class="btn-hitung">Hitung</button>
+      </div>
+
+    </section>
+
+    <section class="result-hero card" id="result-hero">
+      <div class="result-label">Durasi Penyiraman</div>
+      <div class="result-value" id="result-value">—</div>
+      <div class="result-unit">menit</div>
+      <div class="result-tag" id="result-tag">—</div>
+    </section>
+
+    <div class="panels">
+
+      <section class="card panel" id="panel-fuzifikasi">
+        <h2 class="section-title">
+          <span class="step-num">02</span> Fuzzifikasi
+        </h2>
+        <div id="fuz-output" class="mono-table-wrap">
+          <p class="placeholder">Klik Hitung untuk melihat hasil.</p>
+        </div>
+      </section>
+
+      <section class="card panel" id="panel-inferensi">
+        <h2 class="section-title">
+          <span class="step-num">03</span> Inferensi
+        </h2>
+        <div id="inf-output" class="mono-table-wrap">
+          <p class="placeholder">Klik Hitung untuk melihat hasil.</p>
+        </div>
+      </section>
+
+      <section class="card panel full-width" id="panel-defuzifikasi">
+        <h2 class="section-title">
+          <span class="step-num">04</span> Defuzifikasi
+          <span class="formula-badge">Z* = Σ(αᵢ × Zᵢ) / Σ(αᵢ)</span>
+        </h2>
+        <div id="def-output" class="mono-table-wrap">
+          <p class="placeholder">Klik Hitung untuk melihat hasil.</p>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <script src="js/fuzzyLogic.js"></script>
+  <script src="js/fuzifikasi.js"></script>
+  <script src="js/inferensi.js"></script>
+  <script src="js/defuzifikasi.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
