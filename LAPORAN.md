@@ -38,4 +38,3 @@ Sistem ini telah diuji dengan berbagai skenario ekstrem dan terbukti mampu membe
 
 ---
 **Projek AI - Semester 4**
-*Direvisi & Dioptimalkan oleh Gemini CLI Agent*
