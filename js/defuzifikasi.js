@@ -7,7 +7,7 @@ function prosesDefuzifikasi(hasilPerRule) {
             nilaiCrisp: 0,
             totalAlphaZ: 0,
             totalAlpha: 0,
-            ruleAktif: [],
+            detailDefuz: [],
             keterangan: "Tidak ada rule yang aktif"
         };
     }

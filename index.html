@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -28,32 +30,41 @@
       <div class="input-grid">
 
         <div class="input-group">
-          <label for="suhu">Suhu <span class="unit">(°C)</span></label>
+          <label for="suhu"><i data-lucide="thermometer" class="icon-label"></i> Suhu <span class="unit">(°C)</span></label>
           <div class="slider-wrap">
             <input type="range" id="suhu" min="15" max="45" value="30" step="0.1" />
             <output for="suhu" id="suhu-val">30.0</output>
           </div>
           <div class="range-labels"><span>15°C</span><span>45°C</span></div>
+          <div class="chart-container">
+            <canvas id="chart-suhu"></canvas>
+          </div>
           <div class="mu-pills" id="mu-suhu"></div>
         </div>
 
         <div class="input-group">
-          <label for="kelembapan">Kelembapan Tanah <span class="unit">(%)</span></label>
+          <label for="kelembapan"><i data-lucide="droplets" class="icon-label"></i> Kelembapan Tanah <span class="unit">(%)</span></label>
           <div class="slider-wrap">
             <input type="range" id="kelembapan" min="0" max="100" value="40" step="0.1" />
             <output for="kelembapan" id="kelembapan-val">40.0</output>
           </div>
           <div class="range-labels"><span>0%</span><span>100%</span></div>
+          <div class="chart-container">
+            <canvas id="chart-kelembapan"></canvas>
+          </div>
           <div class="mu-pills" id="mu-kelembapan"></div>
         </div>
 
         <div class="input-group">
-          <label for="intensitas">Intensitas Cahaya <span class="unit">(%)</span></label>
+          <label for="intensitas"><i data-lucide="sun" class="icon-label"></i> Intensitas Cahaya <span class="unit">(%)</span></label>
           <div class="slider-wrap">
             <input type="range" id="intensitas" min="0" max="100" value="60" step="0.1" />
             <output for="intensitas" id="intensitas-val">60.0</output>
           </div>
           <div class="range-labels"><span>0%</span><span>100%</span></div>
+          <div class="chart-container">
+            <canvas id="chart-intensitas"></canvas>
+          </div>
           <div class="mu-pills" id="mu-intensitas"></div>
         </div>
 
@@ -111,6 +122,16 @@
         </h2>
         <div id="def-output" class="mono-table-wrap">
           <p class="placeholder">Klik Hitung untuk melihat hasil.</p>
+        </div>
+      </section>
+
+      <section class="card panel full-width" id="panel-riwayat">
+        <h2 class="section-title">
+          <span class="step-num">05</span> Riwayat Perhitungan
+          <button id="btn-clear-history" class="btn-clear">Hapus Semua</button>
+        </h2>
+        <div id="history-output" class="mono-table-wrap">
+          <p class="placeholder">Belum ada riwayat yang disimpan.</p>
         </div>
       </section>
 

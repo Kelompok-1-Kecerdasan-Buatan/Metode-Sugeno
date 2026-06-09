@@ -265,7 +265,16 @@ body {
 .btn-hitung:hover  { background: var(--green-800); }
 .btn-hitung:active { transform: scale(0.97); }
 
-/* ── Result Hero ── */
+/* ── Icons ── */
+.icon-label {
+  width: 14px;
+  height: 14px;
+  vertical-align: -2px;
+  margin-right: 4px;
+  stroke-width: 2.5px;
+}
+
+/* ── Result Hero (Dynamic) ── */
 .result-hero {
   text-align: center;
   padding: 2rem;
@@ -273,12 +282,17 @@ body {
   border-color: var(--green-100);
   position: relative;
   overflow: hidden;
+  transition: all 0.5s cubic-bezier(.4, 0, .2, 1);
 }
+.result-hero.lama     { background: var(--coral-50); border-color: var(--coral-400); }
+.result-hero.sedang   { background: var(--amber-50); border-color: var(--amber-400); }
+.result-hero.sebentar { background: var(--teal-50);  border-color: var(--teal-400);  }
+
 .result-hero::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 60% 60% at 50% 100%, rgba(99,153,34,0.08), transparent);
+  background: radial-gradient(ellipse 60% 60% at 50% 100%, rgba(255,255,255,0.4), transparent);
   pointer-events: none;
 }
 .result-label {
@@ -286,37 +300,43 @@ body {
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--green-400);
+  color: var(--text-2);
   margin-bottom: 0.25rem;
+  opacity: 0.8;
 }
 .result-value {
   font-family: var(--mono);
   font-size: clamp(3rem, 9vw, 5.5rem);
   font-weight: 500;
-  color: var(--green-800);
+  color: var(--text-1);
   line-height: 1;
   letter-spacing: -0.03em;
-  transition: all 0.35s cubic-bezier(.34,1.56,.64,1);
+  transition: transform 0.3s ease;
 }
-.result-unit {
-  font-size: 1rem;
-  color: var(--green-600);
-  margin-top: 2px;
-}
-.result-tag {
+.result-hero:hover .result-value { transform: scale(1.05); }
+
+/* ── Animations ── */
+.mu-bar {
   display: inline-block;
-  margin-top: 0.75rem;
-  font-size: 0.8rem;
-  font-weight: 500;
-  border-radius: 999px;
-  padding: 4px 16px;
-  background: var(--surface);
-  color: var(--text-2);
-  border: 0.5px solid var(--border-md);
+  height: 6px;
+  border-radius: 3px;
+  margin-left: 6px;
+  vertical-align: middle;
+  background: var(--green-400);
+  transition: width 0.6s cubic-bezier(.34,1.56,.64,1);
+  min-width: 2px;
 }
-.result-tag.lama     { background: var(--coral-50); color: var(--coral-600); border-color: rgba(153,60,29,0.2); }
-.result-tag.sedang   { background: var(--amber-50); color: var(--amber-600); border-color: rgba(133,79,11,0.2); }
-.result-tag.sebentar { background: var(--teal-50);  color: var(--teal-600);  border-color: rgba(15,110,86,0.2); }
+
+.mu-pill {
+  transition: all 0.3s ease;
+}
+
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover {
+  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.08);
+}
 
 /* ── Panels ── */
 .panels {
@@ -448,6 +468,78 @@ body {
   font-family: var(--mono);
   flex: 1;
   color: var(--green-600);
+}
+
+/* ── History Styles ── */
+.btn-clear {
+  margin-left: auto;
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--coral-600);
+  background: var(--coral-50);
+  border: 0.5px solid rgba(153,60,29,0.2);
+  border-radius: var(--radius-sm);
+  padding: 2px 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-clear:hover { background: var(--coral-400); color: white; }
+
+.history-table { width: 100%; border-collapse: collapse; }
+.history-table th {
+  text-align: center;
+  color: var(--text-3);
+  font-weight: 400;
+  padding: 8px;
+  border-bottom: 0.5px solid var(--border-md);
+  font-size: 0.72rem;
+}
+.history-table td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 0.5px solid var(--border);
+  color: var(--text-1);
+}
+.history-table tr:hover { background: var(--bg); }
+.history-table .hist-val { font-weight: 600; color: var(--green-800); }
+
+/* ── Custom Range Slider ── */
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  background: transparent;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  background: var(--gray-100);
+  border-radius: 3px;
+}
+input[type=range]::-webkit-slider-thumb {
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--green-600);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -6px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.1s ease;
+}
+input[type=range]:active::-webkit-slider-thumb {
+  transform: scale(1.2);
+  background: var(--green-600);
+}
+
+/* ── Chart Styles ── */
+.chart-container {
+  margin-top: 15px;
+  height: 120px;
+  width: 100%;
+  position: relative;
 }
 
 /* ── Responsive ── */
