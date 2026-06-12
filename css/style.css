@@ -284,9 +284,9 @@ body {
   overflow: hidden;
   transition: all 0.5s cubic-bezier(.4, 0, .2, 1);
 }
-.result-hero.lama     { background: var(--coral-50); border-color: var(--coral-400); }
-.result-hero.sedang   { background: var(--amber-50); border-color: var(--amber-400); }
-.result-hero.sebentar { background: var(--teal-50);  border-color: var(--teal-400);  }
+.result-hero.lama      { background: var(--coral-50); border-color: var(--coral-400); }
+.result-hero.sedang    { background: var(--amber-50); border-color: var(--amber-400); }
+.result-hero.sebentar  { background: var(--teal-50);  border-color: var(--teal-400);  }
 
 .result-hero::before {
   content: '';
@@ -304,9 +304,19 @@ body {
   margin-bottom: 0.25rem;
   opacity: 0.8;
 }
+
+/* ── KODE BARU UNTUK DISPLAY SEBARIS ── */
+.result-main-display {
+  display: flex;
+  align-items: center;      
+  justify-content: center;   
+  gap: 16px;                 
+  margin-top: 0.5rem;
+}
+
 .result-value {
   font-family: var(--mono);
-  font-size: clamp(3rem, 9vw, 5.5rem);
+  font-size: clamp(3rem, 7vw, 4.5rem); 
   font-weight: 500;
   color: var(--text-1);
   line-height: 1;
@@ -314,6 +324,49 @@ body {
   transition: transform 0.3s ease;
 }
 .result-hero:hover .result-value { transform: scale(1.05); }
+
+.result-unit {
+  font-family: var(--sans);
+  font-size: 1.2rem;
+  color: var(--text-2);
+  font-weight: 500;
+}
+
+/* Pembatas vertikal antara menit dan status */
+.result-divider {
+  color: var(--gray-100);
+  font-weight: 300;
+  font-size: 1.8rem;
+  user-select: none;
+}
+
+/* Wrapper kalimat status */
+.result-status-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.result-status-label {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--text-2);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.result-tag {
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-1);
+  background: rgba(255, 255, 255, 0.6); 
+  border: 0.5px solid rgba(0, 0, 0, 0.05);
+  padding: 4px 14px;
+  border-radius: var(--radius-sm);
+  text-transform: capitalize;
+}
 
 /* ── Animations ── */
 .mu-bar {
@@ -507,6 +560,7 @@ body {
 /* ── Custom Range Slider ── */
 input[type=range] {
   -webkit-appearance: none;
+  appearance: none;
   width: 100%;
   background: transparent;
 }
