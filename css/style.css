@@ -284,10 +284,9 @@ body {
   overflow: hidden;
   transition: all 0.5s cubic-bezier(.4, 0, .2, 1);
 }
-
-.result-hero.lama     { background: var(--coral-50); border-color: var(--coral-400); }
-.result-hero.sedang   { background: var(--amber-50); border-color: var(--amber-400); }
-.result-hero.sebentar { background: var(--teal-50);  border-color: var(--teal-400);  }
+.result-hero.lama      { background: var(--coral-50); border-color: var(--coral-400); }
+.result-hero.sedang    { background: var(--amber-50); border-color: var(--amber-400); }
+.result-hero.sebentar  { background: var(--teal-50);  border-color: var(--teal-400);  }
 
 .result-hero::before {
   content: '';
@@ -296,7 +295,6 @@ body {
   background: radial-gradient(ellipse 60% 60% at 50% 100%, rgba(255,255,255,0.4), transparent);
   pointer-events: none;
 }
-
 .result-label {
   font-size: 0.78rem;
   font-weight: 500;
@@ -307,25 +305,26 @@ body {
   opacity: 0.8;
 }
 
+/* ── KODE BARU UNTUK DISPLAY SEBARIS ── */
 .result-main-display {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
+  align-items: center;      
+  justify-content: center;   
+  gap: 16px;                 
   margin-top: 0.5rem;
 }
 
 .result-value {
   font-family: var(--mono);
-  font-size: clamp(3rem, 7vw, 4.5rem);
+  font-size: clamp(3rem, 7vw, 4.5rem); 
   font-weight: 500;
   color: var(--text-1);
   line-height: 1;
   letter-spacing: -0.03em;
   transition: transform 0.3s ease;
 }
-
 .result-hero:hover .result-value { transform: scale(1.05); }
+
 .result-unit {
   font-family: var(--sans);
   font-size: 1.2rem;
@@ -333,6 +332,7 @@ body {
   font-weight: 500;
 }
 
+/* Pembatas vertikal antara menit dan status */
 .result-divider {
   color: var(--gray-100);
   font-weight: 300;
@@ -340,6 +340,7 @@ body {
   user-select: none;
 }
 
+/* Wrapper kalimat status */
 .result-status-wrapper {
   display: inline-flex;
   align-items: center;
@@ -366,6 +367,7 @@ body {
   border-radius: var(--radius-sm);
   text-transform: capitalize;
 }
+
 /* ── Animations ── */
 .mu-bar {
   display: inline-block;
@@ -558,6 +560,7 @@ body {
 /* ── Custom Range Slider ── */
 input[type=range] {
   -webkit-appearance: none;
+  appearance: none;
   width: 100%;
   background: transparent;
 }
